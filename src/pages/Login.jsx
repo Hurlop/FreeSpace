@@ -27,6 +27,7 @@ export function Login() {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
+            className='mx-auto max-w-md py-10'
         >
             <Form.Item
             label="email"
