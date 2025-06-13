@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { use } from 'react'
 import { Form, Button, Input } from "antd";
 import { postLoginService } from '../services/postLoginService';
 import { useNavigate } from 'react-router-dom';
-
+import { useLoginContext } from '../context/LoginContext';
 
 export function Login() {
+    const loginContext = useLoginContext()
     const navigateFeed = useNavigate()
-    async function fetchToken(email, password){
-        const response = await postLoginService(email,password)
-        console.log('respuesta fetchToken: ',response)
-    }
     const onFinish = async values => {
         console.log('Success:', values);
-        await fetchToken(values.email, values.password)
-        navigateFeed('/homeFeed')
+        const isLoggedIn = await loginContext.logIn(values.email, values.password)
+        if(isLoggedIn){
+            alert('Sesion Iniciada')
+            navigateFeed('/homeFeed')
+        } else {
+            alert('Error')
+        }
     };
     const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);

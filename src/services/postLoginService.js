@@ -1,7 +1,6 @@
 import axios from "axios";
 export async function postLoginService(email, password) {
     const LOGIN_API_URL = 'https://reqres.in/api/login'
-    console.log(email,password)
     //manejo de errores
     try {
         const response = await axios.post(
@@ -14,9 +13,8 @@ export async function postLoginService(email, password) {
                 }
             }
         );
-        console.log(response)
-        console.log(response.data.token)
-        return response.data.token
+        console.log(response.request.status)
+        return response
     } catch (error) {
         console.error('Not getting response', error)
     }
