@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import { useEffect } from "react";
 import { Form, Button, Input } from "antd";
 import { postLoginService } from '../services/postLoginService';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +18,14 @@ export function Login() {
         }
     };
     const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
+        console.log('Failed:', errorInfo);
     };
+    useEffect(() =>{
+        const tokenExists = localStorage.getItem('token')
+        if(tokenExists){
+            navigateFeed('/homeFeed')
+        }
+    },[])
   return (
     <>
         <Form

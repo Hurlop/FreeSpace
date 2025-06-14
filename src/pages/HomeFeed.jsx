@@ -1,15 +1,17 @@
-import React from 'react'
-import { useBlogs } from '../hooks/useBlogs'
+import { useBlogs } from '../hooks/useBlogs.jsx'
+import { SideBar } from '../components/SideBar.jsx'
 export function HomeFeed() {
     const {blogs} = useBlogs()
   return (
     <>
-    <div>HomeFeed</div>
-        {blogs.map((blog) => (
-            <div key={blog.id}>
-            <img src={blog.image_url} alt='alt' />
-            </div>
-        ))}
+    
+    <SideBar/>
+        
     </>
   )
 }
+{/* {blogs.map((blog) => (
+    <div key={blog.id}>
+    <img src={blog.image_url} alt='alt' />
+    </div>
+))} */}
