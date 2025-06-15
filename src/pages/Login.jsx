@@ -6,24 +6,23 @@ import { useLoginContext } from '../context/LoginContext';
 
 export function Login() {
     const loginContext = useLoginContext()
-    const navigateFeed = useNavigate()
+    const navigate = useNavigate()
     const onFinish = async values => {
         console.log('Success:', values);
         const isLoggedIn = await loginContext.logIn(values.email, values.password)
         if(isLoggedIn){
             alert('Sesion Iniciada')
-            navigateFeed('/homeFeed')
+            navigate('/homeFeed')
         } else {
             alert('Error')
         }
     };
-    const onFinishFailed = errorInfo => {
-        console.log('Failed:', errorInfo);
-    };
     useEffect(() =>{
         const tokenExists = localStorage.getItem('token')
         if(tokenExists){
-            navigateFeed('/homeFeed')
+            navigate('/homeFeed')
+        } else {
+            navigate('/')
         }
     },[])
   return (
@@ -31,14 +30,13 @@ export function Login() {
         <Form
             name="login"
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
             className='mx-auto max-w-md py-10'
         >
             <Form.Item
             label="email"
             name="email"
-            rules={[{ required: true, message: 'Ingresa tu email!' }]}
+            rules={[{ required: true, message: 'Enter your email' }]}
             >
             <Input />
             </Form.Item>
@@ -46,7 +44,7 @@ export function Login() {
             <Form.Item
             label="password"
             name="password"
-            rules={[{ required: true, message: 'Ingresa tu contrasena!' }]}
+            rules={[{ required: true, message: 'Enter your password' }]}
             >
             <Input.Password />
             </Form.Item>
@@ -55,6 +53,7 @@ export function Login() {
             <Button type="primary" htmlType="submit">
                 Submit
             </Button>
+            <button onClick={() => navigate("/register")}>Register</button>
             </Form.Item>
         </Form>
 </>

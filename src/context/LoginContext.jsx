@@ -1,21 +1,22 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import { postLoginService } from "../services/postLoginService"
-import { useNavigate } from "react-router-dom"
 import { set } from "react-hook-form"
-import { Empty } from "antd"
 
 const LoginContext = createContext()
 export const LoginContextProvider = ({children}) => {
 
-  const [token, setToken] = useState(null)
+  const[user, setUser] = useState(null)
+  const[token, setToken] = useState(null)
 
   async function logIn(email, password){
     const response = await postLoginService(email,password)
-    console.log('respuesta: ',response)
-    
-    if(response && response.request.status === 200){
-      setToken(response.data.token)
-      localStorage.setItem('token', JSON.stringify(response.data.token))
+    const userFound = response.data.find((users) => users.email === email && users.password === password)
+    if(userFound){
+      setUser(userFound)
+      const tokenGenerated = new Date().getTime()
+      localStorage.setItem('token', tokenGenerated)
+      setToken(tokenGenerated)
+      localStorage.setItem('user', JSON.stringify(userFound))
       return true
     } else {
       return false
@@ -24,7 +25,9 @@ export const LoginContextProvider = ({children}) => {
 
   function logOut(){
     localStorage.removeItem('token')
+    localStorage.removeItem('user')
     setToken(null)
+    setUser(null)
     alert('Logged Out')
   }
   useEffect(() =>{
@@ -32,7 +35,7 @@ export const LoginContextProvider = ({children}) => {
     setToken(stored)
   },[])
   return (
-    <LoginContext.Provider value={{logIn, logOut}}>
+    <LoginContext.Provider value={{user, token, logIn, logOut}}>
       {children}
     </LoginContext.Provider>
   )

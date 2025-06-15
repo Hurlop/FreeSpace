@@ -1,23 +1,12 @@
 import axios from "axios";
 export async function postLoginService(email, password) {
-    const LOGIN_API_URL = 'https://reqres.in/api/login'
+    const LOGIN_API_URL = 'http://localhost:3000/users'
     //manejo de errores
     try {
-        const response = await axios.post(
-            LOGIN_API_URL,
-            { email, password },
-            {
-                headers: {
-                    'x-api-key': 'reqres-free-v1',
-                    'Content-Type': 'application/json'
-                }
-            }
-        );
-        console.log(response.request.status)
+        const response = await axios.get(LOGIN_API_URL,{ email, password });
+        console.log(response)
         return response
     } catch (error) {
         console.error('Not getting response', error)
     }
 }
-
-//{email,password},{headers:{'x-api-key':'reqres-free-v1'}}

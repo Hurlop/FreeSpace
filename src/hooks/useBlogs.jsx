@@ -1,4 +1,3 @@
-//Logica del componente Pagina de movies - mostrar Movies
 import { useState, useEffect } from "react"
 import { getAllBlogs } from "../services/blogService.js"
 
