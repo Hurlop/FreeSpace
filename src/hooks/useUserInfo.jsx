@@ -1,20 +1,23 @@
-import { getUserService } from "../services/getUserService"
 import { useState, useEffect } from "react"
 
-export default function useUserInfo() {
-    const [userData, setUserData] = useState({})
-    async function getUserInfo(){
-        try {
-            const userInfo = await getUserService()
-            setUserData(userInfo.data)
-        } catch (error) {
-            console.error('error inesperado: ',error)
-        }
-    }
+export function useUserInfo() {
+    //En esta variable de estado vamos a guardar la informacion de nuestro usuario
+    const [storedUser, setStoredUser] = useState(
+    { email: "",
+        password: "",
+        cellphone: null,
+        gender: "",
+        first_name: "",
+        last_name: ""
+    })
     useEffect(()=>{
-        getUserInfo()
+        //Aqui traemos la informacion desde el local storage de nuestro usuario
+        const userInfo = localStorage.getItem('user')
+        if (userInfo) {
+            setStoredUser(JSON.parse(userInfo));
+        }
     },[])
   return {
-    userData
+    storedUser
   }
 }

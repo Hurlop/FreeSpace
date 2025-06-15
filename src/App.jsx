@@ -4,8 +4,8 @@ import { Layout } from "./pages/Layout.jsx"
 import { LoginContextProvider } from "./context/LoginContext.jsx"
 import { UserProfile } from "./pages/UserProfile.jsx"
 import { UserFeed } from "./pages/UserFeed.jsx"
-import './App.css'
 import { Register } from "./pages/Register.jsx"
+import './App.css'
 
 function App() {
   return (

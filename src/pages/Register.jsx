@@ -4,14 +4,14 @@ import { Form, Button, Input, InputNumber, Select } from "antd";
 import { useNavigate } from "react-router-dom";
 
 export function Register() {
-    const navigateLogin = useNavigate()
+    const navigate = useNavigate()
     const onFinish = async values => {
         const neUserInfo = await postCreateUser(
             values.email,values.password,values.cellphone,values.gender,values.first_name,values.last_name
         )
         if(neUserInfo){
             alert('User created!')
-            navigateLogin('/')
+            navigate('/')
         } else {
             alert('error!')
         }
@@ -54,7 +54,7 @@ export function Register() {
             </Form.Item>
 
             <Form.Item 
-            label="Select"
+            label="Gender"
             name="gender"
             rules={[{ required: true, message: 'Select your gender' }]}
             >
@@ -80,10 +80,16 @@ export function Register() {
             <Input />
             </Form.Item>
 
-            <Form.Item label={null}>
+            <Form.Item label=''>
             <Button type="primary" htmlType="submit">
                 Submit
             </Button>
+            </Form.Item>
+            <Form.Item label=''>
+            <button
+            onClick={() => navigate("/")}>
+                Go back
+            </button>
             </Form.Item>
         </Form>
     </>

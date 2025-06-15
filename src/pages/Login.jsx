@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import { Form, Button, Input } from "antd";
-import { postLoginService } from '../services/postLoginService';
 import { useNavigate } from 'react-router-dom';
-import { useLoginContext } from '../context/LoginContext';
+import { useLoginContext } from '../context/LoginContext.jsx';
 
 export function Login() {
     const loginContext = useLoginContext()
     const navigate = useNavigate()
     const onFinish = async values => {
-        console.log('Success:', values);
         const isLoggedIn = await loginContext.logIn(values.email, values.password)
         if(isLoggedIn){
             alert('Sesion Iniciada')
@@ -49,13 +47,15 @@ export function Login() {
             <Input.Password />
             </Form.Item>
 
-            <Form.Item label={null}>
+            <Form.Item label=''>
             <Button type="primary" htmlType="submit">
                 Submit
             </Button>
-            <button onClick={() => navigate("/register")}>Register</button>
+            </Form.Item>
+            <Form.Item label=''>
+                <button onClick={() => navigate("/register")}>Register</button>
             </Form.Item>
         </Form>
-</>
+    </>
   )
 }
