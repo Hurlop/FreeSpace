@@ -69,7 +69,7 @@ Este proyecto es una aplicación tipo *feed de usuario* construida con **React**
    npm run dev
    ```
 
-4. (Opcional) Corre el servidor JSON
+4. Corre el servidor JSON
    ```bash
    npx json-server --watch db.json --port 3000
    ```
