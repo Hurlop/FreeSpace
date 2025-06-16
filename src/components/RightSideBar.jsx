@@ -7,7 +7,7 @@ export function RightSideBar() {
   return (
     <>
     <aside className="h-screen right-0 top-0 overflow-y-hidden w-[350px] border-l p-4">
-        <section className="flex flex-col gap-4">
+        <section className="flex flex-col gap-3">
             <h2 className="font-bold">Stories</h2>
             <section className="flex flex-row justify-evenly">
                 {storiesData.sort(() => 0.5 - Math.random()).slice(0, 2).map((report) => (
@@ -20,7 +20,7 @@ export function RightSideBar() {
             <h2 className="font-bold">Suggestions</h2>
             <section>
                 {usersData.sort(() => 0.5 - Math.random()).slice(0,3).map((user) =>(
-                    <div key={user.id} className="flex flex-row gap-4 items-center mt-4">
+                    <div key={user.id} className="flex flex-row gap-4 items-center border-t p-3 hover:bg-gray-100">
                         <img src={user.avatar} alt="" className="rounded-full w-[50px] h-[50px] object-cover"/>
                         <div className="flex flex-col font-bold">
                             <span>{user.first_name}</span>

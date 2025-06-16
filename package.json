@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "db": "npx json-server --watch ./src/db/data.json --port 3000"
+    "db": "npx json-server --watch ./src/utils/data.json --port 3000"
   },
   "dependencies": {
     "@iconify/react": "^6.0.0",

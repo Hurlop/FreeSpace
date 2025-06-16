@@ -25,6 +25,7 @@ export const LoginContextProvider = ({children}) => {
   function logOut(){
     localStorage.removeItem('token')
     localStorage.removeItem('user')
+    localStorage.removeItem('posts')
     setToken(null)
     setUser(null)
     alert('Logged Out')

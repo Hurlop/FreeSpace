@@ -197,18 +197,15 @@
       "email": "hurlop@outlook.com",
       "password": "123456",
       "cellphone": 3214563423,
-      "gender": "m",
       "first_name": "Daniel",
       "last_name": "Nino"
     },
     {
-      "id": "1f85",
-      "email": "gatanegra@gmail.com",
-      "password": "123456",
-      "cellphone": 3215465467,
-      "gender": "male",
-      "first_name": "Gata",
-      "last_name": "Negra"
+      "id": "01b9",
+      "email": "lola@outlook.com",
+      "password": "q1w2e3r4t5",
+      "cellphone": "Lola",
+      "gender": "Mento"
     }
   ],
   "suggestions": [
@@ -367,7 +364,7 @@
       "updated_at": "2024-07-24T15:57:38.477496Z"
     }
   ],
-  "comments":[
+  "comments": [
     {
       "id": "10",
       "email": "byron.fields@reqres.in",

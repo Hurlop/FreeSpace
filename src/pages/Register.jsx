@@ -1,97 +1,38 @@
 import { postCreateUser } from "../services/postCreateUser.js"
-import { Form, Button, Input, InputNumber, Select } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export function Register() {
-    const navigate = useNavigate()
-    const onFinish = async values => {
-        const neUserInfo = await postCreateUser(
-            values.email,values.password,values.cellphone,values.gender,values.first_name,values.last_name
-        )
-        if(neUserInfo){
-            alert('User created!')
-            navigate('/')
-        } else {
-            alert('error!')
-        }
-    };
-    const onFinishFailed = errorInfo => {
-        console.log('Failed:', errorInfo);
-    };
+  const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
+  async function signUp(data) {
+    const register = await postCreateUser(data.email, data.password, data.first_name, data.last_name)
+    console.log(data)
+    if (register) {
+      alert('User Created!')
+      navigate('/homeFeed')
+    } else {
+      alert('Error')
+    }
+  }
+  
   return (
     <>
-        <h1>Registration form</h1>
-        <Form
-            name="login"
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-            className='mx-auto max-w-md py-10'
-        >
-            <Form.Item
-            label="E-Mail"
-            name="email"
-            rules={[{ required: true, message: 'Enter your E-Mail' }]}
-            >
-            <Input />
-            </Form.Item>
-
-            <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Enter your Password' }]}
-            >
-            <Input.Password />
-            </Form.Item>
-
-            <Form.Item
-            label="Cellphone"
-            name="cellphone"
-            rules={[{ required: true, message: 'Enter your cellphone' }]}
-            >
-            <InputNumber />
-            </Form.Item>
-
-            <Form.Item 
-            label="Gender"
-            name="gender"
-            rules={[{ required: true, message: 'Select your gender' }]}
-            >
-                <Select>
-                <Select.Option value="male">Male</Select.Option>
-                <Select.Option value="female">Female</Select.Option>
-                </Select>
-            </Form.Item>
-
-            <Form.Item
-            label="First Name"
-            name="first_name"
-            rules={[{ required: true, message: 'Enter your first name' }]}
-            >
-            <Input />
-            </Form.Item>
-
-            <Form.Item
-            label="Last Name"
-            name="last_name"
-            rules={[{ required: true, message: 'Enter your last name' }]}
-            >
-            <Input />
-            </Form.Item>
-
-            <Form.Item label=''>
-            <Button type="primary" htmlType="submit">
-                Submit
-            </Button>
-            </Form.Item>
-            <Form.Item label=''>
-            <button
-            onClick={() => navigate("/")}>
-                Go back
-            </button>
-            </Form.Item>
-        </Form>
+      <section className="flex flex-col h-screen">
+        <h1 className="text-5xl my-10 text-center">FreeSpace</h1>
+        <form onSubmit={handleSubmit(signUp)} className="flex flex-col gap-4 bg-gray-100 p-6 rounded-lg border mx-auto">
+          <h3 className="text-gray-600">Sign up to know more about space</h3>
+          <input type="email" {...register("email")} placeholder="Email" className="border border-gray-400 p-1 rounded-lg" />
+          <input type="password" {...register("password")} placeholder="Password" className="border border-gray-400 p-1 rounded-lg" />
+          <input type="number" {...register("cellphone")} placeholder="Cellphone" className="border border-gray-400 p-1 rounded-lg" />
+          <input type="text" {...register("first_name")} placeholder="First Name" className="border border-gray-400 p-1 rounded-lg" />
+          <input type="text" {...register("last_name")} placeholder="Last Name" className="border border-gray-400 p-1 rounded-lg" />
+          <div className="mx-auto flex gap-3">
+            <button type="submit" className="bg-black text-white py-1 px-20 rounded-lg "> Sign up </button>
+          </div>
+          <span className="m-auto">Have an account? <NavLink to='/' className="text-blue-600"> Login </NavLink></span>
+        </form>
+      </section>
     </>
-    
   )
 }

@@ -9,7 +9,7 @@ export function Blog({blog}) {
 	}
   return (
     <section className="bg-blue-50 m-4 p-6 rounded-2xl" >
-			<div onClick={goToDetail} className="flex flex-col gap-4  hover:cursor-pointer">
+			<div onClick={goToDetail} className="flex flex-col gap-4 rounded-xl p-5 hover:cursor-pointer hover:bg-blue-100 hover:shadow-[2px_0_15px_rgba(0,0,0,0.15)]">
 				<div className="flex justify-between">
 					<div>
 						<h2 className="font-bold">{blog.authors[0].name}</h2>

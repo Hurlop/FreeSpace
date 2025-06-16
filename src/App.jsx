@@ -6,23 +6,26 @@ import { UserProfile } from "./pages/UserProfile.jsx"
 import { UserFeed } from "./pages/UserFeed.jsx"
 import { Register } from "./pages/Register.jsx"
 import { UserFeedDetail } from "./pages/UserFeedDetail.jsx"
+import { NewPost } from "./pages/NewPost.jsx"
 import './App.css'
+
 
 function App() {
   return (
-    <>
-      <LoginContextProvider>
-          <Routes>
-            <Route path="/" element={<Login/>} />
-            <Route path="/register" element={<Register/>} />
-            <Route element={<Layout/>}> 
-              <Route path="/homeFeed" element={<UserFeed/>} />
-              <Route path="/homeFeed/:id" element={<UserFeedDetail/>} />
-              <Route path="/userProfile" element={<UserProfile/>} />
-            </Route>
-          </Routes>
-      </LoginContextProvider>
-    </>
+
+    <LoginContextProvider>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route element={<Layout />}>
+          <Route path="/homeFeed" element={<UserFeed />} />
+          <Route path="/homeFeed/:id" element={<UserFeedDetail />} />
+          <Route path="/userProfile" element={<UserProfile />} />
+          <Route path="/newPost" element={<NewPost />} />
+        </Route>
+      </Routes>
+    </LoginContextProvider>
+
   )
 }
 export default App
