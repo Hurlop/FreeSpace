@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 
-export default function UserPosts({ post, onDelete }) {
+export default function UserPosts({ post, onDelete, userData }) {
   const date = new Date();
   const shortDate = date.toISOString().split("T")[0];
   return (
@@ -9,7 +9,7 @@ export default function UserPosts({ post, onDelete }) {
         <div className="flex flex-col gap-4 rounded-xl p-5 border hover:shadow-[2px_0_15px_rgba(0,0,0,0.15)]">
           <div className="flex justify-between">
             <div>
-              <h2 className="font-bold">Hola</h2>
+              <h2 className="font-bold">{userData.first_name} {userData.last_name}</h2>
               <small className="text-gray-400" >{shortDate}</small>
             </div>
             <button onClick={() => onDelete(post.id)} title="Delete post"><Icon icon="mdi:trashcan" height={20} /></button>

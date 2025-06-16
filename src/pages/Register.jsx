@@ -6,7 +6,7 @@ export function Register() {
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
   async function signUp(data) {
-    const register = await postCreateUser(data.email, data.password, data.first_name, data.last_name)
+    const register = await postCreateUser(data.email, data.password,data.cellphone, data.first_name, data.last_name)
     console.log(data)
     if (register) {
       alert('User Created!')

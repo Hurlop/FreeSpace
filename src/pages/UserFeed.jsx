@@ -12,6 +12,7 @@ export function UserFeed() {
   const [userPosts, setUserPosts] = useState(() => {
     return JSON.parse(localStorage.getItem('posts')) || [];
   });
+  const userData = JSON.parse(localStorage.getItem('user'))
   const handleDelete = (id) => {
     const updatedPosts = userPosts.filter(post => post.id !== id)
     setUserPosts(updatedPosts)
@@ -41,7 +42,7 @@ export function UserFeed() {
           <div>
             <h2 className="m-3 text-xl font-bold">Your posts</h2>
             {
-              userPosts.slice().reverse().map((post) => (<UserPosts key={post.id} post={post} onDelete={handleDelete} />))
+              userPosts.slice().reverse().map((post) => (<UserPosts key={post.id} post={post} userData={userData} onDelete={handleDelete} />))
             }
           </div>
           :
