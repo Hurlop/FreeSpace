@@ -1,6 +1,6 @@
 import axios from "axios";
-export async function getAllBlogs (){
-    const BLOG_API_URL = 'http://localhost:3000/blogs'
+export async function getBlogDetailService (id){
+    const BLOG_API_URL = `http://localhost:3000/blogs/${id}`
     try {
         const response = await axios.get(BLOG_API_URL)
         return response

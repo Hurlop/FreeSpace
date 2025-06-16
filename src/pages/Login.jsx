@@ -22,7 +22,7 @@ export function Login() {
         } else {
             navigate('/')
         }
-    },[])
+    },[navigate])
   return (
     <>
         <Form

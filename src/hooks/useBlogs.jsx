@@ -6,17 +6,15 @@ export function useBlogs(){
     async function fetchBlogsData(){
         try {
             const blogsData = await getAllBlogs()
-            setBlogs(blogsData.results)
+            setBlogs(blogsData.data)
         } catch (error) {
             console.error('error inesperado: ',error)
         }
     }
-    //cuando se cargue por primera vez el componente, activa la funcion para hacer la peticion
     useEffect( () => {
         fetchBlogsData()
     }, [])
-    return{ //los hooks pueden o no retornar
+    return{
         blogs
-        //El resto de variables y metodos
     }
 }

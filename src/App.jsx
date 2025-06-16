@@ -5,6 +5,7 @@ import { LoginContextProvider } from "./context/LoginContext.jsx"
 import { UserProfile } from "./pages/UserProfile.jsx"
 import { UserFeed } from "./pages/UserFeed.jsx"
 import { Register } from "./pages/Register.jsx"
+import { UserFeedDetail } from "./pages/UserFeedDetail.jsx"
 import './App.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/register" element={<Register/>} />
             <Route element={<Layout/>}> 
               <Route path="/homeFeed" element={<UserFeed/>} />
+              <Route path="/homeFeed/:id" element={<UserFeedDetail/>} />
               <Route path="/userProfile" element={<UserProfile/>} />
             </Route>
           </Routes>

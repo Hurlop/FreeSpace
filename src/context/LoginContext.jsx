@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import { postLoginService } from "../services/postLoginService.js"
-import { set } from "react-hook-form"
 
 const LoginContext = createContext()
 export const LoginContextProvider = ({children}) => {
@@ -31,17 +30,21 @@ export const LoginContextProvider = ({children}) => {
     alert('Logged Out')
   }
   useEffect(() =>{
-    const stored = localStorage.getItem('token')
-    setToken(stored)
+    const storedToken = localStorage.getItem('token')
+    const storedUser = localStorage.getItem('user')
+
+    setToken(storedToken)
+    setUser(JSON.parse(storedUser))
   },[])
   return (
-    <LoginContext.Provider value={{user, token, logIn, logOut}}>
+    <LoginContext.Provider value={{user, token, logIn, logOut, setUser}}>
       {children}
     </LoginContext.Provider>
   )
 }
 
+
 export function useLoginContext(){
-    return useContext(LoginContext)
+  return useContext(LoginContext)
 }
     

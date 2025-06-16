@@ -7,9 +7,11 @@ export default {
     extend: {
       colors:{
         //Define tu paleta de colores
+      },
+      fontFamily:{
+        primary: ['"Source Sans 3"', "sans-serif"]
       }
     },
   },
   plugins: [],
 }
-

@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { postCreateUser } from "../services/postCreateUser.js"
 import { Form, Button, Input, InputNumber, Select } from "antd";
 import { useNavigate } from "react-router-dom";
