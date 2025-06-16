@@ -71,7 +71,7 @@ Este proyecto es una aplicación tipo *feed de usuario* construida con **React**
 
 4. Corre el servidor JSON
    ```bash
-   npx json-server --watch db.json --port 3000
+   npx json-server --watch ./src/utils/data.json --port 3000
    ```
 
 ## 📌 Notas
