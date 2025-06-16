@@ -1,12 +1,80 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📝 Proyecto: Mock de Social Website con React llamado FreeSpace 
 
-Currently, two official plugins are available:
+Este proyecto es una aplicación tipo *feed de usuario* construida con **React**, que permite a los usuarios iniciar sesión, crear publicaciones personalizadas, visualizar artículos externos y gestionar su contenido de manera local.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+- Autenticación simulada usando `localStorage`
+- Crear, listar y eliminar publicaciones personalizadas
+- Visualización de artículos desde una API externa (mock con json-server)
+- Diseño adaptable y moderno con Tailwind CSS
+- Ruteo y navegación con `react-router-dom`
+- Datos persistentes simulados con `json-server`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tecnologías y herramientas utilizadas
+
+### ⚙️ React + React Hooks
+- `useState`: manejo del estado de la aplicación
+- `useEffect`: efectos secundarios como llamadas a APIs y control de sesión
+- `useMemo`: para memorizar valores derivados y evitar renders innecesarios
+- `useContext`: para manejar la autenticación globalmente
+- `useNavigate`: navegación programática
+- `react-hook-form`: manejo sencillo de formularios
+
+### 🧠 Custom Hooks
+- Hooks personalizados para obtener y administrar datos de usuario y blogs
+
+### 📡 Axios
+- Cliente HTTP para hacer peticiones `GET`, `POST`, `PATCH`, etc.
+
+### 🎨 Tailwind CSS
+- Utilizado para construir la interfaz con un diseño limpio y responsivo
+
+### 🧩 Iconify
+- Biblioteca de íconos para mejorar la experiencia visual de la app
+
+### 🗂️ JSON Server
+- Usado como una base de datos falsa local para simular peticiones a una API REST
+
+## 📁 Estructura del Proyecto
+
+```bash
+/src
+│
+├── components         # Componentes reutilizables
+├── context            # Contextos globales (como autenticación)
+├── hooks              # Custom hooks
+├── pages              # Páginas principales (UserFeed, UserProfile, etc.)
+├── services           # Llamadas HTTP con Axios
+├── App.jsx            # Configuración de rutas principales
+└── main.jsx           # Entrada de la app
+```
+
+## 🧪 Instalación y ejecución
+
+1. Clona este repositorio  
+   ```bash
+   git clone https://github.com/tuusuario/nombre-del-proyecto.git
+   cd nombre-del-proyecto
+   ```
+
+2. Instala las dependencias  
+   ```bash
+   npm install
+   ```
+
+3. Inicia el servidor de desarrollo  
+   ```bash
+   npm run dev
+   ```
+
+4. Corre el servidor JSON
+   ```bash
+   npx json-server --watch ./src/utils/data.json --port 3000
+   ```
+
+## 📌 Notas
+
+- Asegúrate de tener `json-server` instalado globalmente o usar el comando con `npx`.
+- Este proyecto es ideal para aprender cómo manejar formularios, estado global y peticiones API en React.
